@@ -4,12 +4,12 @@
 Summary:	Ngspice circuit simulator
 Summary(pl.UTF-8):	Ngspice symulator obwodów
 Name:		ngspice
-Version:	28
+Version:	30
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	https://sourceforge.net/projects/ngspice/files/ng-spice-rework/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	5ee9c0a5f52d69ae20b8ef9b46608769
+# Source0-md5:	272653b01dd4529c3c3a1dbd2e1588f1
 Source1:	%{name}.desktop
 URL:		http://ngspice.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -65,7 +65,9 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 install -d $RPM_BUILD_ROOT%{_desktopdir}
 
+%if %{without shared}
 cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
+%endif
 cp -R examples $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
