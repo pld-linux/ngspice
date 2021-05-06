@@ -4,12 +4,12 @@
 Summary:	Ngspice circuit simulator
 Summary(pl.UTF-8):	Ngspice symulator obwodów
 Name:		ngspice
-Version:	31
+Version:	34
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	https://sourceforge.net/projects/ngspice/files/ng-spice-rework/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	f50b4d8c6ecbf01acf121cd9edc3baab
+# Source0-md5:	e88377ff1e5a466dcd240fa235de7551
 Source1:	%{name}.desktop
 URL:		http://ngspice.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -44,6 +44,7 @@ find . '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 %build
 
 %configure \
+	--disable-silent-rules \
 	--enable-xspice \
 	--enable-cider \
 	--enable-openmp \
@@ -54,6 +55,7 @@ find . '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 	--with-x \
 	--with-readline=yes
 %endif
+
 %{__make}
 
 %install
@@ -70,6 +72,9 @@ cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
 %endif
 cp -R examples $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
+%{__rm} $RPM_BUILD_ROOT%{_includedir}/config.h
+%{__rm} $RPM_BUILD_ROOT%{_mandir}/man1/cmpp*1*
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -81,14 +86,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ANALYSES AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/ngspice
 %attr(755,root,root) %{_libdir}/ngspice/*.cm
-%{_mandir}/man1/cmpp*1*
 %{_examplesdir}/%{name}-%{version}
 %{_datadir}/%{name}
 
 %if %{without shared}
+%attr(755,root,root) %{_bindir}/ngspice
 %{_desktopdir}/%{name}.desktop
 %{_mandir}/man1/ng*1*
 %else
