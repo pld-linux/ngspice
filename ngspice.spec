@@ -4,12 +4,12 @@
 Summary:	Ngspice circuit simulator
 Summary(pl.UTF-8):	Ngspice symulator obwodów
 Name:		ngspice
-Version:	35
+Version:	39
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	https://sourceforge.net/projects/ngspice/files/ng-spice-rework/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	be12f2a7ee5516b5509017c1bd3343e3
+# Source0-md5:	513c71e50ec7a6a101d342f5a9eee2ba
 Source1:	%{name}.desktop
 URL:		http://ngspice.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
