@@ -7,7 +7,7 @@ Summary:	Ngspice circuit simulator
 Summary(pl.UTF-8):	Symulator obwodów Ngspice
 Name:		ngspice
 Version:	42
-Release:	2
+Release:	3
 License:	Modified BSD, MPL v2.0, LGPL v2+, GPL v2+
 Group:		Applications/Engineering
 Source0:	https://downloads.sourceforge.net/ngspice/%{name}-%{version}.tar.gz
@@ -61,7 +61,7 @@ aplikacji, jak i biblioteki).
 Summary:	Shared nspice library
 Summary(pl.UTF-8):	Biblioteka współczielona ngspice
 Group:		Libraries
-Requires:	%{name}-data = %{version}-%{release}
+Requires:	%{name}-common = %{version}-%{release}
 
 %description libs
 Shared nspice library.
