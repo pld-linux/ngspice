@@ -1,0 +1,23 @@
+Fix libtool versioning breakage (AGE cannot be empty or greater than CURRENT)
+--- ngspice-42/src/Makefile.am.orig	2023-12-27 19:58:03.000000000 +0100
++++ ngspice-42/src/Makefile.am	2024-04-29 17:58:42.215876756 +0200
+@@ -650,7 +650,7 @@ endif
+ 
+ ## if !SHWIN
+ ## if !SHCYG
+-libngspice_la_LDFLAGS += -version-info $(LT_NGSPICE_CURRENT):$(LT_NGSPICE_REVISION):$(LT_LIBNGSPICE_AGE)
++libngspice_la_LDFLAGS += -version-info $(LT_NGSPICE_CURRENT):$(LT_NGSPICE_REVISION):$(LT_NGSPICE_AGE)
+ ## endif
+ ## endif
+ 
+--- ngspice-42/configure.ac.orig	2023-12-27 19:58:03.000000000 +0100
++++ ngspice-42/configure.ac	2024-04-29 18:16:49.605754536 +0200
+@@ -118,7 +118,7 @@ LT_INIT([shared static])
+ 
+ LT_NGSPICE_CURRENT=0
+ LT_NGSPICE_REVISION=9
+-LT_NGSPICE_AGE=2
++LT_NGSPICE_AGE=0
+ LIBNGSPICE_SO_VERSION=$LT_NGSPICE_CURRENT.$LT_NGSPICE_REVISION.$LT_NGSPICE_AGE
+ 
+ # Announce the libtool version
