@@ -6,14 +6,13 @@
 Summary:	Ngspice circuit simulator
 Summary(pl.UTF-8):	Symulator obwodów Ngspice
 Name:		ngspice
-Version:	42
-Release:	3
+Version:	44.2
+Release:	1
 License:	Modified BSD, MPL v2.0, LGPL v2+, GPL v2+
 Group:		Applications/Engineering
 Source0:	https://downloads.sourceforge.net/ngspice/%{name}-%{version}.tar.gz
-# Source0-md5:	84ab9e67127f9732639195dd63b98a5e
+# Source0-md5:	2f22f83c759afb5c8526fc029fdf891a
 Source1:	%{name}.desktop
-Patch0:		%{name}-am.patch
 URL:		https://ngspice.sourceforge.net/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -83,7 +82,6 @@ Pliki nagłówkowe biblioteki ngspice.
 
 %prep
 %setup -q
-%patch0 -p1
 
 find . '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 
@@ -150,6 +148,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc ANALYSES AUTHORS BUGS ChangeLog DEVICES FAQ NEWS README
 %dir %{_libdir}/ngspice
 %attr(755,root,root) %{_libdir}/ngspice/*.cm
+%attr(755,root,root) %{_libdir}/ngspice/ivlng.so
+%attr(755,root,root) %{_libdir}/ngspice/ivlng.vpi
 %{_datadir}/%{name}
 %{_examplesdir}/%{name}-%{version}
 
