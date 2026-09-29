@@ -6,18 +6,20 @@
 Summary:	Ngspice circuit simulator
 Summary(pl.UTF-8):	Symulator obwodów Ngspice
 Name:		ngspice
-Version:	45.2
+Version:	47
 Release:	1
 License:	Modified BSD, MPL v2.0, LGPL v2+, GPL v2+
 Group:		Applications/Engineering
 Source0:	https://downloads.sourceforge.net/ngspice/%{name}-%{version}.tar.gz
-# Source0-md5:	7043352ffd60f66d7c1bc516562b7a8a
+# Source0-md5:	ae9626cb4631ce90241a400aef42bf40
 Source1:	%{name}.desktop
 URL:		https://ngspice.sourceforge.net/
-BuildRequires:	autoconf >= 2.59
+BuildRequires:	autoconf >= 2.70
 BuildRequires:	automake
 BuildRequires:	fftw3-devel >= 3
 BuildRequires:	libgomp-devel
+BuildRequires:	libsamplerate-devel
+BuildRequires:	libsndfile-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:2
 %if %{with x11}
@@ -57,16 +59,16 @@ Wspólne dane i moduły dla silnika ngspice (zarówno w postaci
 aplikacji, jak i biblioteki).
 
 %package libs
-Summary:	Shared nspice library
-Summary(pl.UTF-8):	Biblioteka współczielona ngspice
+Summary:	Shared ngspice library
+Summary(pl.UTF-8):	Biblioteka współdzielona ngspice
 Group:		Libraries
 Requires:	%{name}-common = %{version}-%{release}
 
 %description libs
-Shared nspice library.
+Shared ngspice library.
 
 %description libs -l pl.UTF-8
-Biblioteka współczielona ngspice.
+Biblioteka współdzielona ngspice.
 
 %package devel
 Summary:	Header files for ngspice library
